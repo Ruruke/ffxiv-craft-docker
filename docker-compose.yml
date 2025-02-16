@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  caddy:
+    image: caddy:latest
+    container_name: caddy-server
+    ports:
+      - "8000:80" # ローカルの8080ポートをコンテナの80ポートにマッピング
+    volumes:
+      - ./app:/var/www/html:ro # ローカルの"./app" を Caddy のデフォルトルートへマウント
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    restart: always # コンテナ停止時でも自動再起動

@@ -1,0 +1,14 @@
+:80 {
+    root * /var/www/html
+    file_server
+
+    @forbidden {
+        path /.gitignore
+        path /.gimodules
+        path /.git
+        path /README.md
+        path /requirements.txt
+        path /.github/*
+    }
+    respond @forbidden 403
+}
